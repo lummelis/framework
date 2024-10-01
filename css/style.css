@@ -1,0 +1,718 @@
+/* -----------------------------------
+--------------------------------------
+--------------------------------------
+
+CSS TABLE OF CONTENTS
+
+# GLOBAL STYLES
+    # GLOBAL VARIABLES
+    # GLOBAL RESET
+    # GLOBAL COLORS
+    # GLOBAL TYPOGRAPHY
+    # GLOBAL MEDIA
+    # GLOBAL HELPERS
+
+# LAYOUT
+    # MEDIA QUERIES / BREAKPOINTS (RESPONSIVE TYPOGRAPHY)
+    # CONTAINER
+    # GRID
+
+# SITE STRUCTURE
+    # HEADER
+        # LOGO
+        # SITE NAV
+        # SITE-HEADER-ON-TOP-OF-HERO
+    # MAIN
+        # SECTIONS
+            #HERO
+    # FOOTER
+    
+#UI COMPONENTS
+    # BUTTONS
+    # CARDS
+    
+--------------------------------------
+--------------------------------------
+-------------------------------------- */
+
+
+/* GLOBAL VARIABLES */
+
+:root {
+
+    /* DEFINE ALL COMMONLY USED COLORS HERE */
+
+    --color-body-background: rgb(255 255 255);
+    --color-text-body: rgb(51 51 51);
+    --color-text-headings: rgb(0 0 0 / 1);
+
+    --color-links-dark: rgb(102 102 102);
+    --color-links-darker: rgb(0 0 0);
+    --color-links-light: rgb(204 204 204);
+    --color-links-lighter: rgb(255 255 255);
+
+
+    --color-siteheader-background: transparent;
+    --color-siteheader-links: rgb(255 255 255);
+
+    --color-hero-background: rgb(100 100 100);
+    --color-hero-text: rgb(255 255 255 / .8);
+    --color-hero-headings: rgb(255 255 255 / 1);
+
+    --color-sitefooter-background: rgb(100 100 100);
+    --color-sitefooter-text: rgb(255 255 255 / .8);
+    --color-sitefooter-headings: rgb(255 255 255 / 1);
+    --color-sitefooter-links: rgb(255 255 255);
+
+    --alt-bg-color: rgb(229 228 226);
+    --dkgray: rgb(51 51 51);
+
+    /*  DEFINE ALL FONTS USED HERE */
+    --font-body: "Public Sans", sans-serif;
+    --font-headings: "lulo-one", sans-serif;
+
+    /* SIZING UNITS */
+    --container-width: 1200px;
+    --unit-xsmall: .5em;
+    --unit-small: 1em;
+    --unit-medium: 2em;
+    --unit-large: 4em;
+
+}
+
+/* GLOBAL RESET */
+
+/* CHANGE BOX-SIZING FOR ALL TO BORDER-BOX */
+* { box-sizing: border-box; }
+
+/* REMOVE THE DEFAULT 8px MARGIN ON THE BODY */
+body { margin: 0; }
+
+/* GLOBAL COLORS */
+
+body {
+
+    /* SET THE COLOR OF THE MAIN BODY BACKGROUND */
+    background-color: var(--color-body-background);
+
+    /* SET THE COLOR OF THE MAIN BODY TEXT */
+    color: var(--color-text-body);
+
+}
+
+h1, h2, h3 {
+     /* SET THE COLOR OF ALL HEADINGS H1-etc */
+    color: var(--color-text-headings);
+}
+
+a {
+    /* SET THE COLOR OF ALL TEXT LINKS */
+    color: var(--color-links-dark);
+
+    /* SET THE COLOR OF ALL HOVER STATES ON TEXT LINKS */
+    &:hover {
+        color: var(--color-links-darker);
+    }
+}
+
+/* GLOBAL TYPOGRAPHY */
+
+body {
+    /* SET THE FONT FOR ALL MAIN BODY TEXT */
+    font-family: var(--font-body);
+
+    /* SET THE LEADING (LINE-HEIGHT) FOR ALL BODY TEXT */
+    line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* SET THE FONT FOR ALL HEADINGS */
+    font-family: var(--font-headings);
+}
+
+h1 {
+    /* SET H1 FONT SIZE */
+    font-size: 3em;
+
+    /* SET H1 LEADING */
+    line-height: 1.1;
+}
+
+
+h2 {
+    /* SET H2 FONT SIZE */
+    font-size: 2em;
+
+    /* SET H2 LEADING */
+    line-height: 1.2;
+}
+
+
+h3 {
+    /* SET H3 FONT SIZE */
+    font-size: 1.5em;
+
+    /* SET H3 LEADING */
+    line-height: 1.3;
+}
+
+
+p {
+    font-size: 1.3em;
+    /* LIMIT THE WIDTH OF ALL PARAGRAPHS */
+    max-width: 65ch;
+
+    /* NEW SCHOOL WIDOW SLAYER */
+    text-wrap: pretty;
+}
+
+p, td {
+    font-size: 1.3em;
+}
+/* GLOBAL MEDIA */
+
+img {
+    /* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
+    max-width: 100%;
+    height: auto; 
+}
+/* GLOBAL HELPERS */
+
+/* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEARCH ENGINES */
+.hide-visually {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+@media (max-width: 767px) {
+    .hide-visually-small-only {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+}
+
+/* ------------ */
+/* –– LAYOUT -- */
+/* ------------ */
+
+/* RESPONSIVE TYPOGRAPHY VIA MEDIA QUERIES */
+
+/* SMALL SCREENS (Mobile < 768px) */
+body {
+    /* SET THE DEFAULT FONT SIZE TO 14px */
+    font-size: 87.5%; 
+}
+
+/* MEDIUM SCREENS (Tablets < 1200px) */
+@media (min-width: 768px) {
+    body {
+        /* SET THE MEDIUM SCREENS AND HIGHER FONT SIZE TO 16px */
+        font-size: 100%; 
+    }
+}
+
+/* LARGE SCREENS (Laptops & Desktops > 1200px) */
+@media (min-width: 1200px) {
+    body {
+        /* SET THE LARGE SCREENS AND HIGHER FONT SIZE TO 18px */
+        font-size: 112.5%; 
+    }
+}
+
+/* CONTAINER */
+.container {
+    /* SET THE MAX WIDTH OF YOUR SITE (eg 1200px) */
+    max-width: var(--container-width);
+
+    /* CENTER THE CONTAINER HORIZONTALLY*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GRID */
+.row {
+    --gridgap: 1em;
+}
+
+.row > * {
+    margin-top: var(--gridgap);
+    margin-bottom: var(--gridgap);
+    padding-left: var(--gridgap);
+    padding-right: var(--gridgap);
+}
+
+@media (min-width: 768px) {
+    .row {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gridgap);
+    }
+
+    /* COMMONLY USED SEMANTIC COLUMN WIDTHS */
+    .one-half { grid-column: auto / span 6; }
+    .one-third { grid-column: auto / span 4; }
+    .two-thirds { grid-column: auto / span 8; }
+    .one-fourth { grid-column: auto / span 3; }
+    .three-fourths { grid-column: auto / span 9; }
+
+    /* 12 COLUMN CLASSES */
+    .col-1 { grid-column: auto / span 1; }
+    .col-2 { grid-column: auto / span 2; }
+    .col-3 { grid-column: auto / span 3; }
+    .col-4 { grid-column: auto / span 4; }
+    .col-5 { grid-column: auto / span 5; }
+    .col-6 { grid-column: auto / span 6; }
+    .col-7 { grid-column: auto / span 7; }
+    .col-8 { grid-column: auto / span 8; }
+    .col-9 { grid-column: auto / span 9; }
+    .col-10 { grid-column: auto / span 10; }
+    .col-11 { grid-column: auto / span 11; }
+    .col-12 { grid-column: auto / span 12; }
+
+    /* COMMONLY CENTERED COLUMNS */
+    .one-half.centered { grid-column: 4 / span 6; }
+    .one-third.centered { grid-column: 5 / span 4; }
+    .two-thirds.centered { grid-column: 3 / span 8; }
+
+    /* PUSHES */
+    .push-1 { grid-column-start: 2; }
+    .push-2 { grid-column-start: 3; }
+    .push-3 { grid-column-start: 4; }
+    .push-4 { grid-column-start: 5; }
+    .push-5 { grid-column-start: 6; }
+    .push-6 { grid-column-start: 7; }
+    .push-7 { grid-column-start: 8; }
+    .push-8 { grid-column-start: 9; }
+    .push-9 { grid-column-start: 10; }
+    .push-10 { grid-column-start: 11; }
+    .push-11 { grid-column-start: 12; }
+
+    /* SWAP (REVERSE) WORKS ONLY w/ 2 CHILDREN */
+    .row.swapped > *:first-child {order: 2}
+    .row.swapped > *:last-child {order: 1}
+}
+
+
+/* --------------------- */
+/* –– SITE STRUCTURE -- */
+/* ------------------- */
+
+/* SITE HEADER */
+.site-header {
+    background-color: var(--color-siteheader-background);
+    
+    /* PUT ALL HEADER CHILDREN SIDE-BY-SIDE ON LARGE SCREEN*/
+
+    @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* ADD SOME GENERAL SPACING/PADDING AROUND THE HEADER */
+    padding: var(--unit-small);
+
+
+    /* REMOVE LINK UNDERLINES AND SET SITE HEADER LINK COLOR */
+    a {
+        text-decoration: none;
+    }
+
+    /* SITE-LOGO */
+    .site-logo {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 1em;
+
+        /* REMOVE MARGINS AND RESIZE H1 INSIDE HEADER */
+        h1 {
+            font-size: 1em;
+            margin: 0;
+            /* white-space: nowrap; */
+            text-wrap: nowrap;
+            letter-spacing: -2px;
+        }
+
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 2em;
+            letter-spacing: -5px;
+        }
+    }
+        
+    }
+    /* SITE-NAV */
+    .site-nav {
+        ul {
+            /* REMOVE MARGINS & BULLETS FROM LIST */
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            display: block;
+        }
+
+        /* MAKE SITE NAV LINKS BIG LIKE BUTTONS */
+        a {
+            display: block;
+            padding: var(--unit-small);
+        }
+    }
+
+}
+
+/* PLACE SITE HEADER ON TOP OF HERO ON LARGE SCREEN */
+.site-header.on-top-of-hero {
+
+    @media (min-width: 768px) {
+
+    /* RENDER HEADER ON TOP OF HERO */
+        position: absolute;
+        width: 100%;
+
+    /* SET SITE HEADER LINK COLOR ON LARGE SCREENS */
+        a {
+            color: var(--color-siteheader-links);
+        }
+
+        & + .site-main > .hero {
+            /* ADD MORE SPACE ON TOP FOR THE ABSOUTE HEADER */
+            padding-top: calc(4em + var(--unit-large));
+        }
+    }
+}
+
+
+
+
+/* SITE MAIN */
+/* .site-main {
+} */
+
+/* SECTIONS */
+section {
+    padding: var(--unit-large) var(--unit-small);
+    min-height: 100svh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+}
+
+.alt-bg {
+    background-color: var(--alt-bg-color);
+}
+section h1 {
+    letter-spacing: -5px;
+}
+.section h4, .section h5 {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 1.2em;
+    letter-spacing: -3px;
+}
+.section p:last-child {
+    padding-bottom: var(--unit-medium);
+}
+
+.section p:first-child {
+    padding-bottom: var(--unit-xsmall);
+}
+
+.section .alt-bg ul li {
+    width: 65ch;
+}
+.section table{
+    width: 100%;
+}
+
+/* HERO SECTION */
+.hero {
+    background-color: var(--color-hero-background);
+    color: var(--color-hero-text);
+    /* padding: 0 var(--unit-medium); */
+
+    h1, h2, h3 {
+        color: var(--color-hero-headings);
+    }
+}
+
+.hero h1 {
+    font-size: .8em;
+    letter-spacing: -2px;
+    line-height: 0;
+    margin: 0;
+}
+
+.hero h2 {
+    font-size: 1.8em;
+    letter-spacing: -5px;
+    line-height: 1;
+}
+
+.hero h3 {
+    font-size: 1.2em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -3px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 1.2em;
+        letter-spacing: -2px;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .hero h2 {
+        font-size: 4em;
+        letter-spacing: -10px;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .hero h3 {
+        font-size: 2.5em;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: -5px;
+        margin: 0;
+        line-height: 1;
+    }
+}
+/* SITE FOOTER */
+.site-footer {   
+    background-color: var(--color-sitefooter-background);
+    color: var(--color-sitefooter-text);
+
+    h1, h2, h3 {
+        color: var(--color-sitefooter-headings);
+    }
+
+    a {
+        color: var(--color-sitefooter-links);
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    /* ADD SOME GENERAL SPACING/PADDING AROUND THE FOOTER */
+    padding: var(--unit-small);
+
+    .site-nav {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+/* --------------------- */
+/* –– UI COMPONENTS -- */
+/* ------------------- */
+
+/* BUTTONS */
+.button {
+    /* SET THE BUTTON COLORS */
+    border: 1px solid var(--color-links-dark);
+    background-color: var(--color-links-dark);
+    color: white;
+    
+    /* ENABLE BOX MODEL SIZING */
+    display: inline-block;
+    padding: var(--unit-small);
+    margin: var(--unit-small) 0;
+    
+    /* GET RID OF THE UNDERLINE */
+    text-decoration: none;
+
+    &+.button {
+        margin-left: var(--unit-small);
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: var(--color-links-darker);
+        border-color: var(--color-links-darker);
+    }
+
+    /* LIGHT BUTTON VARIANT */
+    &.light {
+        border-color: var(--color-links-light);
+        background-color: var(--color-links-light);
+        color: var(--color-links-darker);
+
+        &:hover {
+            border-color: var(--color-links-lighter);
+            background-color: var(--color-links-lighter);
+        }
+    }
+}
+
+
+/* ----------------------------------- */
+/* –– BELLS & WHISTLES TO THE PAGE -- */
+/* --------------------------------- */
+
+/* --- MENU BUTTON --- */
+
+body {
+    overflow-x: hidden;
+}
+.fa { 
+    font-size: 20px;
+}
+
+.fa-bars { 
+    color: white;
+    transition: 1s all ease 1s;
+}
+
+.button-wrapper {
+    width: 54px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    transform-origin: -50% -50%;
+    top: var(--unit-small);
+    right: 20px;
+    transition: 1.25s all ease .9s;
+}
+
+button {
+    width: 54px;
+    height: 54px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 4;
+    position: relative;
+    transition: 1.25s all ease .1s;
+}
+
+.main-button {
+    background: var(--dkgray);
+    align-self: flex-start;
+}
+
+.layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 54px;
+    height: 54px;
+    background: var(--dkgray);
+    border-radius: 50%;
+    z-index: -99;
+    pointer-events: none;
+    transition: 1.25s all ease .5s;
+}
+
+.button-wrapper.clicked {
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg) translateY(-20px) translateX(20px);
+    transition: .3s all ease .6s;
+}
+
+.button-wrapper.clicked .main-button {
+    opacity: 0;
+    transition: .3s all ease .3s;
+}
+
+.button-wrapper.clicked .layer {
+    transform: scale(100);
+    transition: 1.25s all ease .9s;
+}
+    
+.layered-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.7s all ease .3s;
+}
+
+.layered-content.active { opacity: 1; }
+
+.close-button {
+    background: white;
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    color: var(--dkgray);
+}
+
+.layered-content.active .close-button {
+    animation: .2s bounceIn;
+
+}
+/* ------------------------------------ */
+/* ------- CONTAINER SECTIONS ------- */
+/* ---- UNORDERED LISTS & TABLES ---- */
+/* -------------------------------- */
+
+
+li strong {
+    font-family: var(--font-headings);
+    letter-spacing: -3px;
+}
+
+ul li, .analysis .alt-bg ul li {
+    list-style: none;
+}
+
+ul li ul li:last-child, .analysis ul li ul li:last-child {
+    padding-bottom: var(--unit-small);
+    text-wrap: balance;
+}
+
+td:first-child {
+    width: 7ch;
+    text-align: right;
+    padding-right: var(--unit-small);
+    display: grid;
+    align-items: start;
+}
+td:last-child {
+    width: 65ch;
+    padding-bottom: var(--unit-small);
+}
+
+/* --- USING DEFINITION LIST */
+/* dt {
+    display: flex;
+    padding-bottom: var(--unit-small);
+}
+dd:first-child {
+    width: 20ch;
+    text-align: right;
+    padding-right: var(--unit-small);
+    display: grid;
+    align-items: start;
+}
+dd:last-child {
+    width: 65ch;
+    padding-bottom: var(--unit-small);
+} */
